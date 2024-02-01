@@ -14,4 +14,4 @@
 | lapa_authentication_helper | TBD             | Amish Palkar   | TBD                                                           | TBD                                                       | Python   |
 | lapaAuthenticationHelper   | TBD             | Aaditya Shetty | TBD                                                           | TBD                                                       | Node.js  |
 | lapa_deployment            | -               | thePmSquare    | [Link](https://github.com/thepmsquare/lapa_deployment)        | -                                                         | Docker   |
-| lapa_commons               | TBD             | Amish Palkar   | [Link](https://github.com/B21amish/lapa_commons)              | TBD                                                       | Python   |
+| lapa_commons               | TBD             | Lav Sharma   | [Link](https://github.com/lavvsharma/lapa_commons)              | TBD                                                       | Python   |
