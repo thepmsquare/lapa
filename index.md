@@ -10,7 +10,7 @@
 | lapa_file_store            | 0.0.5           | Aaditya Shetty | [Link](https://github.com/adityashetty35/lapa_file_store)      | [Link](https://pypi.org/project/lapa-file-store)          | Python   |
 | lapa_file_store_helper     | 0.0.2           | thePmSquare    | [Link](https://github.com/thepmsquare/lapa_file_store_helper)  | [Link](https://pypi.org/project/lapa-file-store-helper)   | Python   |
 | lapaFileStoreHelper        | 0.0.1           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapaFileStoreHelper)      | [Link](https://www.npmjs.com/package/lapafilestorehelper) | Node.js  |
-| lapa_authentication        | 0.0.3           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_authentication)      | [Link](https://pypi.org/project/lapa-authentication)      | Python   |
+| lapa_authentication        | 0.0.4           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_authentication)      | [Link](https://pypi.org/project/lapa-authentication)      | Python   |
 | lapa_authentication_helper | TBD             | Amish Palkar   | TBD                                                            | TBD                                                       | Python   |
 | lapaAuthenticationHelper   | TBD             | Aaditya Shetty | TBD                                                            | TBD                                                       | Node.js  |
 | lapa_deployment            | -               | thePmSquare    | [Private Link](https://github.com/thepmsquare/lapa_deployment) | -                                                         | Docker   |
