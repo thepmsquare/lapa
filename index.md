@@ -13,9 +13,18 @@
 | lapa_authentication        | 0.0.4           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_authentication)      | [Link](https://pypi.org/project/lapa-authentication)      | Python   |
 | lapa_authentication_helper | TBD             | Amish Palkar   | TBD                                                            | TBD                                                       | Python   |
 | lapaAuthenticationHelper   | TBD             | Aaditya Shetty | TBD                                                            | TBD                                                       | Node.js  |
-| lapa_deployment            | -               | thePmSquare    | [Private Link](https://github.com/thepmsquare/lapa_deployment) | -                                                         | Docker   |
-| lapa_commons               | 0.0.2           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_commons)             | [Link](https://pypi.org/project/lapa-commons/)            | Python   |
-| square_logger              | 1.0.3           | thePmSquare    | [Link](https://github.com/thepmsquare/square_logger)           | [Link](https://pypi.org/project/square-logger/)           | Python   |
+| lapa_deployment            | -               | thePmSquare    | [Private Link](https://github.com/thepmsquare/lapa_deployment) | [Link](https://hub.docker.com/repositories/thepmsquared)  | Docker   |
+| lapa_commons               | 0.0.2           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_commons)             | [Link](https://pypi.org/project/lapa-commons)             | Python   |
+| square_logger              | 1.0.3           | thePmSquare    | [Link](https://github.com/thepmsquare/square_logger)           | [Link](https://pypi.org/project/square-logger)            | Python   |
+
+# Server Links
+
+| Component           | Link                                           |
+| :------------------ | :--------------------------------------------- |
+| pgadmin             | [Link](https://lapa_pgadmin.serveo.net)        |
+| lapa_database       | [Link](https://lapa_database.serveo.net)       |
+| lapa_authentication | [Link](https://lapa_authentication.serveo.net) |
+| lapa_file_store     | [Link](https://lapa_file_store.serveo.net)     |
 
 ## Last updated on
 
