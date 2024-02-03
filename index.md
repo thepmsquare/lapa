@@ -14,7 +14,7 @@
 | lapa_authentication_helper | TBD             | Amish Palkar   | TBD                                                            | TBD                                                       | Python   |
 | lapaAuthenticationHelper   | TBD             | Aaditya Shetty | TBD                                                            | TBD                                                       | Node.js  |
 | lapa_deployment            | -               | thePmSquare    | [Private Link](https://github.com/thepmsquare/lapa_deployment) | -                                                         | Docker   |
-| lapa_commons               | 0.0.1           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_commons)             | [Link](https://pypi.org/project/lapa-commons/)            | Python   |
+| lapa_commons               | 0.0.2           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_commons)             | [Link](https://pypi.org/project/lapa-commons/)            | Python   |
 | square_logger              | 1.0.3           | thePmSquare    | [Link](https://github.com/thepmsquare/square_logger)           | [Link](https://pypi.org/project/square-logger/)           | Python   |
 
 ## Last updated on
