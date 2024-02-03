@@ -17,6 +17,15 @@
 | lapa_commons               | 0.0.2           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_commons)             | [Link](https://pypi.org/project/lapa-commons)             | Python   |
 | square_logger              | 1.0.3           | thePmSquare    | [Link](https://github.com/thepmsquare/square_logger)           | [Link](https://pypi.org/project/square-logger)            | Python   |
 
+# Server Links
+
+| Component           | Link                                           |
+| :------------------ | :--------------------------------------------- |
+| pgadmin             | [Link](https://lapa_pgadmin.serveo.net)        |
+| lapa_database       | [Link](https://lapa_database.serveo.net)       |
+| lapa_authentication | [Link](https://lapa_authentication.serveo.net) |
+| lapa_file_store     | [Link](https://lapa_file_store.serveo.net)     |
+
 ## Last updated on
 
 03 February 2024
