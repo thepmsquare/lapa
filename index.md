@@ -15,7 +15,7 @@
 | lapaAuthenticationHelper   | 0.0.1           | Aaditya Shetty | [Link](https://github.com/adityashetty35/lapaAuthenticationHelper)| [Link](https://www.npmjs.com/package/lapaauthenticationhelper)   | Node.js  |
 | lapa_deployment            | -               | thePmSquare    | [Private Link](https://github.com/thepmsquare/lapa_deployment)    | [Link](https://hub.docker.com/repositories/thepmsquared)    | Docker   |
 | lapa_commons               | 0.0.2           | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa_commons)                | [Link](https://pypi.org/project/lapa-commons)               | Python   |
-| square_logger              | 1.0.4           | thePmSquare    | [Link](https://github.com/thepmsquare/square_logger)              | [Link](https://pypi.org/project/square-logger)              | Python   |
+| square_logger              | 1.0.5           | thePmSquare    | [Link](https://github.com/thepmsquare/square_logger)              | [Link](https://pypi.org/project/square-logger)              | Python   |
 
 # Server Links
 
@@ -28,4 +28,4 @@
 
 ## Last updated on
 
-8 March 2024
+10 March 2024
