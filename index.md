@@ -1,6 +1,6 @@
 # List of Repositories
 
-| Repo Name                  | Lastest Version | Repo Owner     | Github Link                                                       | Deployed Link                                               | Language |
+| Repository Name            | Lastest Version | Repo Owner     | Github Link                                                       | Deployed Link                                               | Language |
 | :------------------------- | :-------------- | :------------- | :---------------------------------------------------------------- | :---------------------------------------------------------- | :------- |
 | lapa                       | -               | Lav Sharma     | [Link](https://github.com/lavvsharma/lapa)                        | [Link](https://lavvsharma.github.io/lapa)                   | Markdown |
 | lapa_database              | 0.0.9           | thePmSquare    | [Link](https://github.com/thepmsquare/lapa_database)              | [Link](https://pypi.org/project/lapa-database)              | Python   |
