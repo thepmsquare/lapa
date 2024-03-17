@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+  gap: 1rem;
+}
+
+.repoSkeletonParent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
