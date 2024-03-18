@@ -2,6 +2,7 @@
 import styles from "../stylesheets/page.module.css";
 import type { Repositories, Repository } from "../types/Repositories";
 import repositories from "../config/repositories";
+import linkToFetchLastUpdatedOn from "../config/lastUpdatedOn";
 import serverLinks from "@/config/serverLinks";
 import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
 import { Link, Typography, Skeleton } from "@mui/material";
@@ -9,6 +10,9 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [displayRepos, changeDisplayRepos] = useState<Repositories | undefined>(
+    undefined
+  );
+  const [lastUpdatedText, changeLastUpdatedText] = useState<string | undefined>(
     undefined
   );
 
@@ -125,9 +129,24 @@ export default function Home() {
     }
     changeDisplayRepos(repositoriesClone);
   };
+  const getLastUpdatedOn = async () => {
+    let lastUpdatedOn;
+    try {
+      const response = await fetch(linkToFetchLastUpdatedOn);
+      const data = await response.json();
+      lastUpdatedOn = `Last Updated On: ${new Date(
+        data.commit.commit.author.date
+      ).toLocaleDateString()} by ${data.commit.commit.author.name}`;
+    } catch (error) {
+      console.log(error);
+      lastUpdatedOn = "Last Updated On: unable to fetch";
+    }
 
+    changeLastUpdatedText(lastUpdatedOn);
+  };
   useEffect(() => {
     getVersionNumbers();
+    getLastUpdatedOn();
   }, []);
 
   return (
@@ -173,8 +192,9 @@ export default function Home() {
         pageSizeOptions={[10, 20]}
         rowSelection={false}
       />
-      <Typography variant="h2">Last Updated On</Typography>
-      <Typography>TBD</Typography>
+      {lastUpdatedText && (
+        <Typography variant="h6">{lastUpdatedText}</Typography>
+      )}
     </main>
   );
 }
