@@ -1,4 +1,4 @@
-import type { Repositories } from "../types/Data";
+import type { Repositories } from "../types/Repositories";
 import { v4 as uuid } from "uuid";
 
 const repositories: Repositories = [

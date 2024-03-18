@@ -1,15 +1,10 @@
 "use client";
 import styles from "../stylesheets/page.module.css";
-import type { Repositories, Repository } from "../types/Data";
-import repositories from "../config/data";
+import type { Repositories, Repository } from "../types/Repositories";
+import repositories from "../config/repositories";
+import serverLinks from "@/config/serverLinks";
 import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
-import {
-  Link,
-  CircularProgress,
-  Typography,
-  Paper,
-  Skeleton,
-} from "@mui/material";
+import { Link, Typography, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -17,7 +12,7 @@ export default function Home() {
     undefined
   );
 
-  const columns: GridColDef[] = [
+  const repoTableColumns: GridColDef[] = [
     {
       field: "repoName",
       headerName: "Repository Name",
@@ -77,7 +72,28 @@ export default function Home() {
       flex: 1,
     },
   ];
-
+  const serverLinksColumns: GridColDef[] = [
+    {
+      field: "component",
+      headerName: "Component",
+      flex: 1,
+    },
+    {
+      field: "link",
+      headerName: "Link",
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          params.value && (
+            <Link href={params.value} target="_blank">
+              Link
+            </Link>
+          )
+        );
+      },
+    },
+  ];
   const getVersionNumbers = async () => {
     const repositoriesClone: Repositories = JSON.parse(
       JSON.stringify(repositories)
@@ -121,7 +137,7 @@ export default function Home() {
       {displayRepos ? (
         <DataGrid
           rows={displayRepos}
-          columns={columns}
+          columns={repoTableColumns}
           initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 10 },
@@ -144,6 +160,21 @@ export default function Home() {
           <Skeleton variant="rounded" width="100%" height="3rem" />
         </div>
       )}
+      <Typography variant="h2">Server Links</Typography>
+
+      <DataGrid
+        rows={serverLinks}
+        columns={serverLinksColumns}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 10 },
+          },
+        }}
+        pageSizeOptions={[10, 20]}
+        rowSelection={false}
+      />
+      <Typography variant="h2">Last Updated On</Typography>
+      <Typography>TBD</Typography>
     </main>
   );
 }
