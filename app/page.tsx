@@ -17,7 +17,6 @@ import { useEffect, useState } from "react";
 import config from "../config/config";
 import type ThemeState from "@/types/ThemeState";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { DarkMode, LightMode } from "@mui/icons-material";
 
 export default function Home() {
   // get stuff from local storage
@@ -122,11 +121,13 @@ export default function Home() {
     {
       field: "repoName",
       headerName: "Repository Name",
+      minWidth: 280,
       flex: 1,
     },
     {
       field: "latestVersion",
       headerName: "Latest Version",
+      minWidth: 80,
       flex: 1,
       sortable: false,
       renderCell: (params) => {
@@ -142,11 +143,13 @@ export default function Home() {
     {
       field: "repoOwner",
       headerName: "Repository Owner",
+      minWidth: 100,
       flex: 1,
     },
     {
       field: "sourceCodeLink",
       headerName: "Source Code Link",
+      minWidth: 80,
       flex: 1,
       sortable: false,
       renderCell: (params) => {
@@ -160,6 +163,7 @@ export default function Home() {
     {
       field: "previewLink",
       headerName: "Preview Link",
+      minWidth: 100,
       flex: 1,
       sortable: false,
       renderCell: (params) => {
@@ -175,6 +179,7 @@ export default function Home() {
     {
       field: "programmingLanguage",
       headerName: "Programming Language",
+      minWidth: 100,
       flex: 1,
     },
   ];
@@ -183,11 +188,13 @@ export default function Home() {
       field: "component",
       headerName: "Component",
       flex: 1,
+      minWidth: 280,
     },
     {
       field: "link",
       headerName: "Link",
       flex: 1,
+      minWidth: 80,
       sortable: false,
       renderCell: (params) => {
         return (
