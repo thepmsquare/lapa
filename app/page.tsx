@@ -110,6 +110,12 @@ export default function Home() {
     },
     typography: {
       fontFamily: config.defaultFont,
+      h2: {
+        fontFamily: config.defaultFontHeadings,
+      },
+      h6: {
+        fontFamily: config.defaultFontHeadings,
+      },
     },
   });
   const repoTableColumns: GridColDef[] = [
