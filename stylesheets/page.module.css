@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin: 3rem;
+  padding: 3rem;
   gap: 1rem;
 }
 
@@ -10,4 +10,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+.fab {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }
