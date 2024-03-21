@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 
 import "../stylesheets/globals.css";
-import "@fontsource/roboto-slab/300.css";
-import "@fontsource/roboto-slab/400.css";
-import "@fontsource/roboto-slab/500.css";
-import "@fontsource/roboto-slab/700.css";
-
-import "@fontsource/fira-mono/400.css";
-import "@fontsource/fira-mono/500.css";
-import "@fontsource/fira-mono/700.css";
+import { Providers } from "./providers";
 export const metadata: Metadata = {
   title: "lapa",
   description: "List of Repositories for lapa",
@@ -21,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

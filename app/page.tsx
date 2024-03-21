@@ -1,28 +1,30 @@
 "use client";
+
 import styles from "../stylesheets/page.module.css";
 import type { Repositories, Repository } from "../types/Repositories";
 import repositories from "../config/repositories";
 import linkToFetchLastUpdatedOn from "../config/lastUpdatedOn";
 import serverLinks from "@/config/serverLinks";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import {
-  Link,
-  Typography,
-  Skeleton,
-  StyledEngineProvider,
-  Fab,
-  Paper,
-} from "@mui/material";
 import { useEffect, useState } from "react";
 import config from "../config/config";
 import type ThemeState from "@/types/ThemeState";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Button, Spinner } from "@nextui-org/react";
+import { useTheme } from "next-themes";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  getKeyValue,
+} from "@nextui-org/react";
 
 export default function Home() {
   // get stuff from local storage
 
   // state
-  const [themeState, changeThemeState] = useState(config.defaultThemeState);
+  const { theme, setTheme } = useTheme();
 
   const [displayRepos, changeDisplayRepos] = useState<Repositories | undefined>(
     undefined
@@ -30,6 +32,7 @@ export default function Home() {
   const [lastUpdatedText, changeLastUpdatedText] = useState<string | undefined>(
     undefined
   );
+  const [mounted, setMounted] = useState(false);
 
   // functions
   const getVersionNumbers = async () => {
@@ -79,8 +82,8 @@ export default function Home() {
     changeLastUpdatedText(lastUpdatedOn);
   };
   const toggleThemeState = () => {
-    let newThemeState: ThemeState = themeState === "dark" ? "light" : "dark";
-    changeThemeState(newThemeState);
+    let newThemeState: ThemeState = theme === "dark" ? "light" : "dark";
+    setTheme(newThemeState);
     window.localStorage.setItem("theme", newThemeState);
   };
   const setThemeFromLocalStorage = () => {
@@ -92,182 +95,145 @@ export default function Home() {
       defaultThemeState = config.defaultThemeState;
       window.localStorage.setItem("theme", config.defaultThemeState);
     }
-    changeThemeState(defaultThemeState);
+    setTheme(defaultThemeState);
   };
   // use effect
   useEffect(() => {
     setThemeFromLocalStorage();
     getVersionNumbers();
     getLastUpdatedOn();
+    setMounted(true);
   }, []);
 
   // misc
 
-  let currentTheme = createTheme({
-    palette: {
-      mode: themeState,
-    },
-    typography: {
-      fontFamily: config.defaultFont,
-      h2: {
-        fontFamily: config.defaultFontHeadings,
-      },
-      h6: {
-        fontFamily: config.defaultFontHeadings,
-      },
-    },
-  });
-  const repoTableColumns: GridColDef[] = [
-    {
-      field: "repoName",
-      headerName: "Repository Name",
-      minWidth: 280,
-      flex: 1,
-    },
-    {
-      field: "latestVersion",
-      headerName: "Latest Version",
-      minWidth: 80,
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          params.value.version && (
-            <Link href={params.value.publicLink} target="_blank">
-              {params.value.version}
-            </Link>
-          )
-        );
-      },
-    },
-    {
-      field: "repoOwner",
-      headerName: "Repository Owner",
-      minWidth: 100,
-      flex: 1,
-    },
-    {
-      field: "sourceCodeLink",
-      headerName: "Source Code Link",
-      minWidth: 80,
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Link href={params.value.value} target="_blank">
-            {params.value.isPrivate ? "Private Link" : "Link"}
-          </Link>
-        );
-      },
-    },
-    {
-      field: "previewLink",
-      headerName: "Preview Link",
-      minWidth: 100,
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          params.value && (
-            <Link href={params.value} target="_blank">
-              Link
-            </Link>
-          )
-        );
-      },
-    },
-    {
-      field: "programmingLanguage",
-      headerName: "Programming Language",
-      minWidth: 100,
-      flex: 1,
-    },
-  ];
-  const serverLinksColumns: GridColDef[] = [
+  // const repoTableColumns: GridColDef[] = [
+  //   {
+  //     field: "repoName",
+  //     headerName: "Repository Name",
+  //     minWidth: 280,
+  //     flex: 1,
+  //   },
+  //   {
+  //     field: "latestVersion",
+  //     headerName: "Latest Version",
+  //     minWidth: 80,
+  //     flex: 1,
+  //     sortable: false,
+  //     renderCell: (params) => {
+  //       return (
+  //         params.value.version && (
+  //           <Link href={params.value.publicLink} target="_blank">
+  //             {params.value.version}
+  //           </Link>
+  //         )
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "repoOwner",
+  //     headerName: "Repository Owner",
+  //     minWidth: 100,
+  //     flex: 1,
+  //   },
+  //   {
+  //     field: "sourceCodeLink",
+  //     headerName: "Source Code Link",
+  //     minWidth: 80,
+  //     flex: 1,
+  //     sortable: false,
+  //     renderCell: (params) => {
+  //       return (
+  //         <Link href={params.value.value} target="_blank">
+  //           {params.value.isPrivate ? "Private Link" : "Link"}
+  //         </Link>
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "previewLink",
+  //     headerName: "Preview Link",
+  //     minWidth: 100,
+  //     flex: 1,
+  //     sortable: false,
+  //     renderCell: (params) => {
+  //       return (
+  //         params.value && (
+  //           <Link href={params.value} target="_blank">
+  //             Link
+  //           </Link>
+  //         )
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "programmingLanguage",
+  //     headerName: "Programming Language",
+  //     minWidth: 100,
+  //     flex: 1,
+  //   },
+  // ];
+
+  //   <Link href={params.value} target="_blank">
+  //   Link
+  // </Link>
+  const serverLinksColumns = [
     {
       field: "component",
       headerName: "Component",
-      flex: 1,
-      minWidth: 280,
     },
     {
       field: "link",
       headerName: "Link",
-      flex: 1,
-      minWidth: 80,
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          params.value && (
-            <Link href={params.value} target="_blank">
-              Link
-            </Link>
-          )
-        );
-      },
     },
   ];
+  if (!mounted) return null;
   return (
-    <ThemeProvider theme={currentTheme}>
-      <StyledEngineProvider injectFirst>
-        <Paper className={styles.main} square>
-          <Typography variant="h2">List of Repositories</Typography>
+    <main className={styles.main}>
+      <p>List of Repositories</p>
 
-          {displayRepos ? (
-            <DataGrid
-              rows={displayRepos}
-              columns={repoTableColumns}
-              initialState={{
-                pagination: {
-                  paginationModel: { page: 0, pageSize: 10 },
-                },
-              }}
-              pageSizeOptions={[10, 20]}
-              rowSelection={false}
-            />
-          ) : (
-            <div className={styles.repoSkeletonParent}>
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-              <Skeleton variant="rounded" width="100%" height="3rem" />
-            </div>
+      {displayRepos ? (
+        "table"
+      ) : (
+        // <DataGrid
+        //   rows={displayRepos}
+        //   columns={repoTableColumns}
+        //   initialState={{
+        //     pagination: {
+        //       paginationModel: { page: 0, pageSize: 10 },
+        //     },
+        //   }}
+        //   pageSizeOptions={[10, 20]}
+        //   rowSelection={false}
+        // />
+        <Spinner />
+      )}
+      <p>Server Links</p>
+      <Table aria-label="Table with server links">
+        <TableHeader columns={serverLinksColumns}>
+          {(column) => (
+            <TableColumn key={column.field}>{column.headerName}</TableColumn>
           )}
-          <Typography variant="h2">Server Links</Typography>
-
-          <DataGrid
-            rows={serverLinks}
-            columns={serverLinksColumns}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 10 },
-              },
-            }}
-            pageSizeOptions={[10, 20]}
-            rowSelection={false}
-          />
-          {lastUpdatedText && (
-            <Typography variant="h6">{lastUpdatedText}</Typography>
+        </TableHeader>
+        <TableBody items={serverLinks}>
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => (
+                <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+              )}
+            </TableRow>
           )}
-          <Fab
-            color="primary"
-            aria-label="theme-toggle"
-            onClick={toggleThemeState}
-            variant="extended"
-            className={styles.fab}
-          >
-            {themeState === "dark"
-              ? "Switch to Light Mode"
-              : "Switch to Dark Mode"}
-          </Fab>
-        </Paper>
-      </StyledEngineProvider>
-    </ThemeProvider>
+        </TableBody>
+      </Table>
+      {lastUpdatedText && <p>{lastUpdatedText}</p>}
+      <Button
+        color="primary"
+        aria-label="theme-toggle"
+        onClick={toggleThemeState}
+        className={styles.fab}
+      >
+        {theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      </Button>
+    </main>
   );
 }
