@@ -5,10 +5,10 @@ import type { Repositories, Repository } from "../types/Repositories";
 import repositories from "../config/repositories";
 import linkToFetchLastUpdatedOn from "../config/lastUpdatedOn";
 import serverLinks from "@/config/serverLinks";
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import config from "../config/config";
 import type ThemeState from "@/types/ThemeState";
-import { Button, Spinner } from "@nextui-org/react";
+import { Button, Link, Spinner } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import {
   Table,
@@ -17,12 +17,10 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  getKeyValue,
 } from "@nextui-org/react";
+import { ServerLink } from "@/types/ServerLinks";
 
 export default function Home() {
-  // get stuff from local storage
-
   // state
   const { theme, setTheme } = useTheme();
 
@@ -87,6 +85,7 @@ export default function Home() {
     window.localStorage.setItem("theme", newThemeState);
   };
   const setThemeFromLocalStorage = () => {
+    // get stuff from local storage
     let localStorageTheme = window.localStorage.getItem("theme");
     let defaultThemeState: ThemeState;
     if (localStorageTheme !== null) {
@@ -96,6 +95,90 @@ export default function Home() {
       window.localStorage.setItem("theme", config.defaultThemeState);
     }
     setTheme(defaultThemeState);
+  };
+  const getCellValueForServerLinks = (item: ServerLink, key: Key) => {
+    if (key === "component") {
+      return <>{item.component}</>;
+    } else if (key === "link") {
+      return (
+        <Button
+          href={item.link}
+          as={Link}
+          color="primary"
+          showAnchorIcon
+          variant="solid"
+          target="_blank"
+          size="sm"
+        >
+          Open
+        </Button>
+      );
+    } else {
+      console.error(
+        `Invalid values in getCellValueForServerLinks: item: ${item}, key: ${key}.`
+      );
+      return <>unknown error</>;
+    }
+  };
+  const getCellValueForRepositories = (item: Repository, key: Key) => {
+    if (key === "repoName") {
+      return <>{item.repoName}</>;
+    } else if (key === "latestVersion") {
+      return item.latestVersion.type !== "empty" ? (
+        <Button
+          href={item.latestVersion.publicLink}
+          as={Link}
+          color="primary"
+          showAnchorIcon
+          variant="solid"
+          target="_blank"
+          size="sm"
+        >
+          {item.latestVersion.version}
+        </Button>
+      ) : (
+        <></>
+      );
+    } else if (key === "repoOwner") {
+      return <>{item.repoOwner}</>;
+    } else if (key === "sourceCodeLink") {
+      return (
+        <Button
+          href={item.sourceCodeLink.value}
+          as={Link}
+          color={item.sourceCodeLink.isPrivate ? "default" : "primary"}
+          showAnchorIcon
+          variant="solid"
+          target="_blank"
+          size="sm"
+        >
+          {item.sourceCodeLink.isPrivate ? "Private Link" : "Open"}
+        </Button>
+      );
+    } else if (key === "previewLink") {
+      return item.previewLink ? (
+        <Button
+          href={item.previewLink}
+          as={Link}
+          color="primary"
+          showAnchorIcon
+          variant="solid"
+          target="_blank"
+          size="sm"
+        >
+          Open
+        </Button>
+      ) : (
+        <></>
+      );
+    } else if (key === "programmingLanguage") {
+      return <>{item.programmingLanguage}</>;
+    } else {
+      console.error(
+        `Invalid values in getCellValueForServerLinks: item: ${item}, key: ${key}.`
+      );
+      return <>unknown error</>;
+    }
   };
   // use effect
   useEffect(() => {
@@ -107,76 +190,33 @@ export default function Home() {
 
   // misc
 
-  // const repoTableColumns: GridColDef[] = [
-  //   {
-  //     field: "repoName",
-  //     headerName: "Repository Name",
-  //     minWidth: 280,
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "latestVersion",
-  //     headerName: "Latest Version",
-  //     minWidth: 80,
-  //     flex: 1,
-  //     sortable: false,
-  //     renderCell: (params) => {
-  //       return (
-  //         params.value.version && (
-  //           <Link href={params.value.publicLink} target="_blank">
-  //             {params.value.version}
-  //           </Link>
-  //         )
-  //       );
-  //     },
-  //   },
-  //   {
-  //     field: "repoOwner",
-  //     headerName: "Repository Owner",
-  //     minWidth: 100,
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "sourceCodeLink",
-  //     headerName: "Source Code Link",
-  //     minWidth: 80,
-  //     flex: 1,
-  //     sortable: false,
-  //     renderCell: (params) => {
-  //       return (
-  //         <Link href={params.value.value} target="_blank">
-  //           {params.value.isPrivate ? "Private Link" : "Link"}
-  //         </Link>
-  //       );
-  //     },
-  //   },
-  //   {
-  //     field: "previewLink",
-  //     headerName: "Preview Link",
-  //     minWidth: 100,
-  //     flex: 1,
-  //     sortable: false,
-  //     renderCell: (params) => {
-  //       return (
-  //         params.value && (
-  //           <Link href={params.value} target="_blank">
-  //             Link
-  //           </Link>
-  //         )
-  //       );
-  //     },
-  //   },
-  //   {
-  //     field: "programmingLanguage",
-  //     headerName: "Programming Language",
-  //     minWidth: 100,
-  //     flex: 1,
-  //   },
-  // ];
+  const repoTableColumns = [
+    {
+      field: "repoName",
+      headerName: "Repository Name",
+    },
+    {
+      field: "latestVersion",
+      headerName: "Latest Version",
+    },
+    {
+      field: "repoOwner",
+      headerName: "Repository Owner",
+    },
+    {
+      field: "sourceCodeLink",
+      headerName: "Source Code Link",
+    },
+    {
+      field: "previewLink",
+      headerName: "Preview Link",
+    },
+    {
+      field: "programmingLanguage",
+      headerName: "Programming Language",
+    },
+  ];
 
-  //   <Link href={params.value} target="_blank">
-  //   Link
-  // </Link>
   const serverLinksColumns = [
     {
       field: "component",
@@ -188,27 +228,35 @@ export default function Home() {
     },
   ];
   if (!mounted) return null;
+
   return (
     <main className={styles.main}>
-      <p>List of Repositories</p>
-
+      <h1>lapa</h1>
+      <h2>List of Repositories</h2>
       {displayRepos ? (
-        "table"
+        <Table aria-label="Table with repo links">
+          <TableHeader columns={repoTableColumns}>
+            {(column) => (
+              <TableColumn key={column.field}>{column.headerName}</TableColumn>
+            )}
+          </TableHeader>
+          <TableBody items={displayRepos}>
+            {(item) => (
+              <TableRow key={item.id}>
+                {(columnKey) => (
+                  <TableCell>
+                    {getCellValueForRepositories(item, columnKey)}
+                  </TableCell>
+                )}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
       ) : (
-        // <DataGrid
-        //   rows={displayRepos}
-        //   columns={repoTableColumns}
-        //   initialState={{
-        //     pagination: {
-        //       paginationModel: { page: 0, pageSize: 10 },
-        //     },
-        //   }}
-        //   pageSizeOptions={[10, 20]}
-        //   rowSelection={false}
-        // />
         <Spinner />
       )}
-      <p>Server Links</p>
+
+      <h2>Server Links</h2>
       <Table aria-label="Table with server links">
         <TableHeader columns={serverLinksColumns}>
           {(column) => (
@@ -219,13 +267,17 @@ export default function Home() {
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (
-                <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+                <TableCell>
+                  {getCellValueForServerLinks(item, columnKey)}
+                </TableCell>
               )}
             </TableRow>
           )}
         </TableBody>
       </Table>
+
       {lastUpdatedText && <p>{lastUpdatedText}</p>}
+
       <Button
         color="primary"
         aria-label="theme-toggle"

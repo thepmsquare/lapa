@@ -31,7 +31,7 @@ const repositories: Repositories = [
       value: "https://github.com/thepmsquare/lapa_database",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -47,7 +47,7 @@ const repositories: Repositories = [
       value: "https://github.com/B21amish/lapa_database_structure",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -63,7 +63,7 @@ const repositories: Repositories = [
       value: "https://github.com/thepmsquare/lapa_database_helper",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -79,7 +79,7 @@ const repositories: Repositories = [
       value: "https://github.com/B21amish/lapaDatabaseHelper",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Node.js",
   },
   {
@@ -95,7 +95,7 @@ const repositories: Repositories = [
       value: "https://github.com/adityashetty35/lapa_file_store",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -111,7 +111,7 @@ const repositories: Repositories = [
       value: "https://github.com/thepmsquare/lapa_file_store_helper",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -127,7 +127,7 @@ const repositories: Repositories = [
       value: "https://github.com/lavvsharma/lapaFileStoreHelper",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Node.js",
   },
   {
@@ -143,7 +143,7 @@ const repositories: Repositories = [
       value: "https://github.com/lavvsharma/lapa_authentication",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -160,7 +160,7 @@ const repositories: Repositories = [
       value: "https://github.com/B21amish/lapa_authentication_helper",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -177,7 +177,7 @@ const repositories: Repositories = [
       value: "https://github.com/adityashetty35/lapaAuthenticationHelper",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Node.js",
   },
   {
@@ -209,7 +209,7 @@ const repositories: Repositories = [
       value: "https://github.com/lavvsharma/lapa_commons/",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
   {
@@ -225,7 +225,7 @@ const repositories: Repositories = [
       value: "https://github.com/thepmsquare/square_logger",
       isPrivate: false,
     },
-    previewLink: "",
+    previewLink: null,
     programmingLanguage: "Python",
   },
 ];

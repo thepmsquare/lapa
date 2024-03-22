@@ -4,4 +4,4 @@ type ServerLink = {
   link: string;
 };
 type ServerLinks = ServerLink[];
-export type { ServerLinks };
+export type { ServerLinks, ServerLink };
