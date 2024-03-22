@@ -1,10 +1,10 @@
 .main {
-  display: flex;
-  flex-direction: column;
   padding: 3rem;
-  gap: 1rem;
 }
-
+.table {
+  margin: 1rem;
+  width: max-content;
+}
 .fab {
   position: fixed;
   bottom: 1rem;

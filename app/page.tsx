@@ -17,6 +17,8 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Accordion,
+  AccordionItem,
 } from "@nextui-org/react";
 import { ServerLink } from "@/types/ServerLinks";
 
@@ -231,50 +233,64 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1>lapa</h1>
-      <h2>List of Repositories</h2>
-      {displayRepos ? (
-        <Table aria-label="Table with repo links">
-          <TableHeader columns={repoTableColumns}>
-            {(column) => (
-              <TableColumn key={column.field}>{column.headerName}</TableColumn>
-            )}
-          </TableHeader>
-          <TableBody items={displayRepos}>
-            {(item) => (
-              <TableRow key={item.id}>
-                {(columnKey) => (
-                  <TableCell>
-                    {getCellValueForRepositories(item, columnKey)}
-                  </TableCell>
+      <Accordion defaultExpandedKeys={["1", "2"]} selectionMode="multiple">
+        <AccordionItem
+          key="1"
+          aria-label="Accordion with repo links"
+          title="List of Repositories"
+        >
+          {displayRepos ? (
+            <Table aria-label="Table with repo links" className={styles.table}>
+              <TableHeader columns={repoTableColumns}>
+                {(column) => (
+                  <TableColumn key={column.field}>
+                    {column.headerName}
+                  </TableColumn>
                 )}
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      ) : (
-        <Spinner />
-      )}
-
-      <h2>Server Links</h2>
-      <Table aria-label="Table with server links">
-        <TableHeader columns={serverLinksColumns}>
-          {(column) => (
-            <TableColumn key={column.field}>{column.headerName}</TableColumn>
+              </TableHeader>
+              <TableBody items={displayRepos}>
+                {(item) => (
+                  <TableRow key={item.id}>
+                    {(columnKey) => (
+                      <TableCell>
+                        {getCellValueForRepositories(item, columnKey)}
+                      </TableCell>
+                    )}
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          ) : (
+            <Spinner />
           )}
-        </TableHeader>
-        <TableBody items={serverLinks}>
-          {(item) => (
-            <TableRow key={item.id}>
-              {(columnKey) => (
-                <TableCell>
-                  {getCellValueForServerLinks(item, columnKey)}
-                </TableCell>
+        </AccordionItem>
+        <AccordionItem
+          key="2"
+          aria-label="Accordion with server links"
+          title="Server Links"
+        >
+          <Table aria-label="Table with server links" className={styles.table}>
+            <TableHeader columns={serverLinksColumns}>
+              {(column) => (
+                <TableColumn key={column.field}>
+                  {column.headerName}
+                </TableColumn>
               )}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+            </TableHeader>
+            <TableBody items={serverLinks}>
+              {(item) => (
+                <TableRow key={item.id}>
+                  {(columnKey) => (
+                    <TableCell>
+                      {getCellValueForServerLinks(item, columnKey)}
+                    </TableCell>
+                  )}
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </AccordionItem>
+      </Accordion>
 
       {lastUpdatedText && <p>{lastUpdatedText}</p>}
 
