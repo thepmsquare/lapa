@@ -5,6 +5,12 @@
   margin: 1rem;
   width: max-content;
 }
+.spinnerParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+}
 .fab {
   position: fixed;
   bottom: 1rem;

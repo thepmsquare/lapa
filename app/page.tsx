@@ -261,7 +261,9 @@ export default function Home() {
               </TableBody>
             </Table>
           ) : (
-            <Spinner />
+            <div className={styles.spinnerParent}>
+              <Spinner />
+            </div>
           )}
         </AccordionItem>
         <AccordionItem
