@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "../stylesheets/page.module.css";
 import type { Repositories, Repository } from "../types/Repositories";
 import repositories from "../config/repositories";
 import linkToFetchLastUpdatedOn from "../config/lastUpdatedOn";
@@ -241,52 +240,56 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <main className={styles.main}>
+    <main className="p-12">
       <Accordion defaultExpandedKeys={["1", "2", "3"]} selectionMode="multiple">
         <AccordionItem
           key="1"
           aria-label="Accordion with intro"
           title="Introduction to Lapa"
         >
-          {introText}
-          {teamMembers.map((teamMember) => {
-            return (
-              <Card className="max-w-[340px]" key={teamMember.id}>
-                <CardHeader className="justify-between">
-                  <div className="flex gap-5">
-                    <Avatar
-                      isBordered
-                      radius="full"
-                      size="md"
-                      src={teamMember.imageSrc}
-                    />
-                    <div className="flex flex-col gap-1 items-start justify-center">
-                      <h4 className="text-small font-semibold leading-none text-default-600">
-                        {teamMember.name}
-                      </h4>
-                      <h5 className="text-small tracking-tight text-default-400">
-                        @{teamMember.userName}
-                      </h5>
-                    </div>
-                  </div>
-                  <Button
-                    href={teamMember.link}
-                    as={Link}
-                    color="primary"
-                    showAnchorIcon
-                    variant="solid"
-                    target="_blank"
-                    size="sm"
-                  >
-                    More
-                  </Button>
-                </CardHeader>
-                <CardBody className="px-3 py-0 text-small text-default-400">
-                  <p>{teamMember.about}</p>
-                </CardBody>
-              </Card>
-            );
-          })}
+          <div className="m-4 flex gap-4 flex-col">
+            {introText}
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
+              {teamMembers.map((teamMember) => {
+                return (
+                  <Card key={teamMember.id}>
+                    <CardHeader className="justify-between">
+                      <div className="flex gap-5">
+                        <Avatar
+                          isBordered
+                          radius="full"
+                          size="md"
+                          src={teamMember.imageSrc}
+                        />
+                        <div className="flex flex-col gap-1 items-start justify-center">
+                          <h4 className="text-small font-semibold leading-none text-default-600">
+                            {teamMember.name}
+                          </h4>
+                          <h5 className="text-small tracking-tight text-default-400">
+                            @{teamMember.userName}
+                          </h5>
+                        </div>
+                      </div>
+                      <Button
+                        href={teamMember.link}
+                        as={Link}
+                        color="primary"
+                        showAnchorIcon
+                        variant="solid"
+                        target="_blank"
+                        size="sm"
+                      >
+                        More
+                      </Button>
+                    </CardHeader>
+                    <CardBody className="px-3 py-0 text-small text-default-400 m-2">
+                      <p>{teamMember.about}</p>
+                    </CardBody>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
         </AccordionItem>
 
         <AccordionItem
@@ -295,7 +298,7 @@ export default function Home() {
           title="List of Repositories"
         >
           {displayRepos ? (
-            <Table aria-label="Table with repo links" className={styles.table}>
+            <Table aria-label="Table with repo links" className="m-4 w-max">
               <TableHeader columns={repoTableColumns}>
                 {(column) => (
                   <TableColumn key={column.field}>
@@ -316,7 +319,7 @@ export default function Home() {
               </TableBody>
             </Table>
           ) : (
-            <div className={styles.spinnerParent}>
+            <div className="flex items-center justify-center h-40">
               <Spinner />
             </div>
           )}
@@ -326,7 +329,7 @@ export default function Home() {
           aria-label="Accordion with server links"
           title="Server Links"
         >
-          <Table aria-label="Table with server links" className={styles.table}>
+          <Table aria-label="Table with server links" className="m-4 w-max">
             <TableHeader columns={serverLinksColumns}>
               {(column) => (
                 <TableColumn key={column.field}>
@@ -355,7 +358,7 @@ export default function Home() {
         color="primary"
         aria-label="theme-toggle"
         onClick={toggleThemeState}
-        className={styles.fab}
+        className="fixed bottom-4 right-4"
       >
         {theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
       </Button>
