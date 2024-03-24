@@ -8,7 +8,15 @@ import serverLinks from "@/config/serverLinks";
 import { Key, useEffect, useState } from "react";
 import config from "../config/config";
 import type ThemeState from "@/types/ThemeState";
-import { Button, Link, Spinner } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Link,
+  Spinner,
+} from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import {
   Table,
@@ -21,6 +29,7 @@ import {
   AccordionItem,
 } from "@nextui-org/react";
 import { ServerLink } from "@/types/ServerLinks";
+import teamMembers from "../config/teamMembers";
 
 export default function Home() {
   // state
@@ -233,9 +242,59 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Accordion defaultExpandedKeys={["1", "2"]} selectionMode="multiple">
+      <Accordion defaultExpandedKeys={["1", "2", "3"]} selectionMode="multiple">
         <AccordionItem
           key="1"
+          aria-label="Accordion with intro"
+          title="Introduction to lapa"
+        >
+          We are a group of programmers building an end-to-end encrypted chat
+          app from the ground up. Leveraging our design and coding skills, we're
+          creating a safe and user-friendly platform. Our unique twist?
+          Custom-built components with modular application design. All while
+          continuing to learn and iterate throughout the development process.
+          {teamMembers.map((teamMember) => {
+            return (
+              <Card className="max-w-[340px]">
+                <CardHeader className="justify-between">
+                  <div className="flex gap-5">
+                    <Avatar
+                      isBordered
+                      radius="full"
+                      size="md"
+                      src={teamMember.imageSrc}
+                    />
+                    <div className="flex flex-col gap-1 items-start justify-center">
+                      <h4 className="text-small font-semibold leading-none text-default-600">
+                        {teamMember.name}
+                      </h4>
+                      <h5 className="text-small tracking-tight text-default-400">
+                        @{teamMember.userName}
+                      </h5>
+                    </div>
+                  </div>
+                  <Button
+                    href={teamMember.link}
+                    as={Link}
+                    color="primary"
+                    showAnchorIcon
+                    variant="solid"
+                    target="_blank"
+                    size="sm"
+                  >
+                    More
+                  </Button>
+                </CardHeader>
+                <CardBody className="px-3 py-0 text-small text-default-400">
+                  <p>{teamMember.about}</p>
+                </CardBody>
+              </Card>
+            );
+          })}
+        </AccordionItem>
+
+        <AccordionItem
+          key="2"
           aria-label="Accordion with repo links"
           title="List of Repositories"
         >
@@ -267,7 +326,7 @@ export default function Home() {
           )}
         </AccordionItem>
         <AccordionItem
-          key="2"
+          key="3"
           aria-label="Accordion with server links"
           title="Server Links"
         >
