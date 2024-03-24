@@ -29,7 +29,7 @@ import {
   AccordionItem,
 } from "@nextui-org/react";
 import { ServerLink } from "@/types/ServerLinks";
-import teamMembers from "../config/teamMembers";
+import { introText, teamMembers } from "../config/teamMembers";
 
 export default function Home() {
   // state
@@ -246,16 +246,12 @@ export default function Home() {
         <AccordionItem
           key="1"
           aria-label="Accordion with intro"
-          title="Introduction to lapa"
+          title="Introduction to Lapa"
         >
-          We are a group of programmers building an end-to-end encrypted chat
-          app from the ground up. Leveraging our design and coding skills, we're
-          creating a safe and user-friendly platform. Our unique twist?
-          Custom-built components with modular application design. All while
-          continuing to learn and iterate throughout the development process.
+          {introText}
           {teamMembers.map((teamMember) => {
             return (
-              <Card className="max-w-[340px]">
+              <Card className="max-w-[340px]" key={teamMember.id}>
                 <CardHeader className="justify-between">
                   <div className="flex gap-5">
                     <Avatar
