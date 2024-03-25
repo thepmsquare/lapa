@@ -240,7 +240,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <main className="p-12">
+    <main className="p-4">
       <Accordion defaultExpandedKeys={["1", "2", "3"]} selectionMode="multiple">
         <AccordionItem
           key="1"
@@ -248,7 +248,7 @@ export default function Home() {
           title="Introduction to Lapa"
         >
           <div className="m-4 flex gap-4 flex-col">
-            {introText}
+            <p className="text-justify">{introText}</p>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
               {teamMembers.map((teamMember) => {
                 return (
