@@ -21,7 +21,7 @@ const teamMembers: TeamMembers = [
     name: "Parth Mangtani",
     userName: "thepmsquare",
     link: "https://thepmsquare.github.io/",
-    about: "Full stack application developer.",
+    about: "Right angles only :)",
   },
 ];
 export { introText, teamMembers };
