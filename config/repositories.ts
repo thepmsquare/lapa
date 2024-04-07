@@ -10,7 +10,7 @@ const repositories: Repositories = [
       type: "empty",
       publicLink: "",
     },
-    repoOwner: "Lav Sharma",
+    repoOwner: "thePmSquare",
     sourceCodeLink: {
       value: "https://github.com/lavvsharma/lapa",
       isPrivate: false,
@@ -122,7 +122,7 @@ const repositories: Repositories = [
       type: "npm",
       publicLink: "https://www.npmjs.com/package/lapafilestorehelper/",
     },
-    repoOwner: "Lav Sharma",
+    repoOwner: "Aaditya Shetty",
     sourceCodeLink: {
       value: "https://github.com/lavvsharma/lapaFileStoreHelper",
       isPrivate: false,
@@ -138,7 +138,7 @@ const repositories: Repositories = [
       type: "pip",
       publicLink: "https://pypi.org/pypi/lapa_authentication/",
     },
-    repoOwner: "Lav Sharma",
+    repoOwner: "Amish Palkar",
     sourceCodeLink: {
       value: "https://github.com/lavvsharma/lapa_authentication",
       isPrivate: false,
@@ -204,7 +204,7 @@ const repositories: Repositories = [
       type: "pip",
       publicLink: "https://pypi.org/pypi/lapa_commons/",
     },
-    repoOwner: "Lav Sharma",
+    repoOwner: "Amish Palkar",
     sourceCodeLink: {
       value: "https://github.com/lavvsharma/lapa_commons/",
       isPrivate: false,

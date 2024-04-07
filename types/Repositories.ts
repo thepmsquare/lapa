@@ -12,7 +12,7 @@ type Repository = {
   id: string;
   repoName: string;
   latestVersion: LatestVersion;
-  repoOwner: "thePmSquare" | "Lav Sharma" | "Amish Palkar" | "Aaditya Shetty";
+  repoOwner: "thePmSquare" | "Amish Palkar" | "Aaditya Shetty";
   sourceCodeLink: SourceCodeLink;
   previewLink: string | null;
   programmingLanguage: "Python" | "Node.js" | "Docker";
