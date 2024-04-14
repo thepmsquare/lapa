@@ -231,7 +231,11 @@ const repositories: Repositories = [
   {
     id: uuid(),
     repoName: "lapaChat",
-    latestVersion: null,
+    latestVersion: {
+      linkToFetchVersion: "",
+      type: "empty",
+      publicLink: "",
+    },
     repoOwner: "Amish Palkar",
     sourceCodeLink: {
       value: "https://github.com/B21amish/lapaChat",
