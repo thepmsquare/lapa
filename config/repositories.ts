@@ -228,6 +228,22 @@ const repositories: Repositories = [
     previewLink: null,
     programmingLanguage: "Python",
   },
+  {
+    id: uuid(),
+    repoName: "lapaChat",
+    latestVersion: {
+      linkToFetchVersion: "",
+      type: "empty",
+      publicLink: "",
+    },
+    repoOwner: "Amish Palkar",
+    sourceCodeLink: {
+      value: "https://github.com/B21amish/lapaChat",
+      isPrivate: false,
+    },
+    previewLink: null,
+    programmingLanguage: "Node.js",
+  },
 ];
 
 export default repositories;
