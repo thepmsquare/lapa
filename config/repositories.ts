@@ -12,10 +12,10 @@ const repositories: Repositories = [
     },
     repoOwner: "thePmSquare",
     sourceCodeLink: {
-      value: "https://github.com/lavvsharma/lapa",
+      value: "https://github.com/thepmsquare/lapa",
       isPrivate: false,
     },
-    previewLink: "https://lavvsharma.github.io/lapa",
+    previewLink: "https://thepmsquare.github.io/lapa",
     programmingLanguage: "Node.js",
   },
   {
@@ -124,7 +124,7 @@ const repositories: Repositories = [
     },
     repoOwner: "Aaditya Shetty",
     sourceCodeLink: {
-      value: "https://github.com/lavvsharma/lapaFileStoreHelper",
+      value: "https://github.com/adityashetty35/lapaFileStoreHelper",
       isPrivate: false,
     },
     previewLink: null,
@@ -140,7 +140,7 @@ const repositories: Repositories = [
     },
     repoOwner: "Amish Palkar",
     sourceCodeLink: {
-      value: "https://github.com/lavvsharma/lapa_authentication",
+      value: "https://github.com/B21amish/lapa_authentication",
       isPrivate: false,
     },
     previewLink: null,
@@ -206,7 +206,7 @@ const repositories: Repositories = [
     },
     repoOwner: "Amish Palkar",
     sourceCodeLink: {
-      value: "https://github.com/lavvsharma/lapa_commons/",
+      value: "https://github.com/B21amish/lapa_commons/",
       isPrivate: false,
     },
     previewLink: null,
