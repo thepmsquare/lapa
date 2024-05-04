@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Fetch upstream changes
-        run: git remote add upstream https://github.com/lavvsharma/lapa
+        run: git remote add upstream https://github.com/thepmsquare/lapa
 
       - name: Fetch upstream changes
         run: git fetch upstream
