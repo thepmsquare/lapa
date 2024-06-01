@@ -1,13 +1,14 @@
 "use client";
 
 import type { Repositories, Repository } from "../types/Repositories";
-import repositories from "../config/repositories";
-import linkToFetchLastUpdatedOn from "../config/lastUpdatedOn";
-import serverLinks from "@/config/serverLinks";
+import { useTheme } from "next-themes";
 import { Key, useEffect, useState } from "react";
-import config from "../config/config";
-import type ThemeState from "@/types/ThemeState";
+
+import serverLinks from "@/config/serverLinks";
+import { ServerLink } from "@/types/ServerLinks";
 import {
+  Accordion,
+  AccordionItem,
   Avatar,
   Button,
   Card,
@@ -15,21 +16,20 @@ import {
   CardHeader,
   Link,
   Spinner,
-} from "@nextui-org/react";
-import { useTheme } from "next-themes";
-import {
   Table,
-  TableHeader,
-  TableColumn,
   TableBody,
-  TableRow,
   TableCell,
-  Accordion,
-  AccordionItem,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@nextui-org/react";
-import { ServerLink } from "@/types/ServerLinks";
+
+import config from "../config/config";
+import linkToFetchLastUpdatedOn from "../config/lastUpdatedOn";
+import repositories from "../config/repositories";
 import { introText, teamMembers } from "../config/teamMembers";
 
+import type ThemeState from "@/types/ThemeState";
 export default function Home() {
   // state
   const { theme, setTheme } = useTheme();
@@ -44,6 +44,7 @@ export default function Home() {
 
   // functions
   const getVersionNumbers = async () => {
+    changeDisplayRepos(repositories);
     const repositoriesClone: Repositories = JSON.parse(
       JSON.stringify(repositories)
     );
@@ -143,6 +144,7 @@ export default function Home() {
           variant="solid"
           target="_blank"
           size="sm"
+          isLoading={item.latestVersion.version === undefined}
         >
           {item.latestVersion.version}
         </Button>
