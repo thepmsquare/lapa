@@ -247,7 +247,7 @@ export default function Home() {
         <AccordionItem
           key="1"
           aria-label="Accordion with intro"
-          title="Introduction to Lapa"
+          title="Introduction to lapa"
         >
           <div className="m-4 flex gap-4 flex-col">
             <p className="text-justify">{introText}</p>
