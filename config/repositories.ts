@@ -241,7 +241,7 @@ const repositories: Repositories = [
       value: "https://github.com/B21amish/lapaChat",
       isPrivate: false,
     },
-    previewLink: null,
+    previewLink: "https://b21amish.github.io/lapaChat",
     programmingLanguage: "Node.js",
   },
 ];
